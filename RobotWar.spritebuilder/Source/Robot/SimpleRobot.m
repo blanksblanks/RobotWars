@@ -65,10 +65,18 @@ typedef NS_ENUM(NSInteger, RobotAction) {
   }
 }
 
+- (void)bulletHitEnemy:(Bullet *)bullet {
+    [self shoot];
+    [self cancelActiveAction];
+    [self shoot];
+}
+
 - (void)gotHit {
   [self shoot];
   [self turnRobotLeft:45];
   [self moveAhead:100];
+  [self turnRobotRight:45];
+  [self shoot];
 }
 
 @end
